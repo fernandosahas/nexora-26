@@ -1,0 +1,185 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  background: #05060f;
+}
+
+body {
+  min-height: 100svh;
+  background: #05060f;
+  color: #e2e8f0;
+  overflow-x: hidden;
+  -webkit-tap-highlight-color: transparent;
+}
+
+::selection {
+  background: rgba(224, 185, 90, 0.35);
+  color: #fff;
+}
+
+section[id] {
+  scroll-margin-top: 1rem;
+}
+
+/* Fixed cosmic backdrop (cheap: pure CSS gradients) */
+.cosmos-bg {
+  background:
+    radial-gradient(1100px 700px at 50% -8%, rgba(88, 66, 180, 0.38), transparent 62%),
+    radial-gradient(800px 600px at 105% 38%, rgba(201, 161, 74, 0.08), transparent 60%),
+    radial-gradient(700px 600px at -10% 75%, rgba(70, 90, 200, 0.14), transparent 60%),
+    linear-gradient(180deg, #05060f 0%, #080b1a 50%, #05060f 100%);
+}
+
+@layer components {
+  .glass {
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.02));
+    border: 1px solid rgba(224, 185, 90, 0.22);
+    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px);
+    box-shadow:
+      0 12px 40px -14px rgba(0, 0, 0, 0.65),
+      inset 0 1px 0 rgba(255, 255, 255, 0.07);
+  }
+
+  .text-gold-gradient {
+    background-image: linear-gradient(180deg, #fbf0c8 0%, #ecd28a 42%, #b88a2e 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .btn-gold {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    overflow: hidden;
+    border-radius: 9999px;
+    padding: 0.95rem 2rem;
+    font-family: "Cinzel", Georgia, serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #1a1204;
+    background: linear-gradient(135deg, #f6e7b4 0%, #e0b95a 48%, #b88a2e 100%);
+    box-shadow:
+      0 0 0 1px rgba(255, 240, 190, 0.5) inset,
+      0 10px 34px -6px rgba(224, 185, 90, 0.55),
+      0 0 60px -10px rgba(224, 185, 90, 0.5);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    touch-action: manipulation;
+  }
+  .btn-gold::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    width: 40%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.55), transparent);
+    animation: sheen 4.5s ease-in-out infinite;
+  }
+  .btn-gold:active {
+    transform: scale(0.97);
+  }
+  @media (hover: hover) {
+    .btn-gold:hover {
+      transform: translateY(-2px);
+      box-shadow:
+        0 0 0 1px rgba(255, 240, 190, 0.6) inset,
+        0 14px 44px -6px rgba(224, 185, 90, 0.7),
+        0 0 80px -8px rgba(224, 185, 90, 0.6);
+    }
+  }
+  .btn-gold:focus-visible,
+  a:focus-visible {
+    outline: 2px solid #f6e7b4;
+    outline-offset: 3px;
+  }
+
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    border-radius: 9999px;
+    padding: 0.9rem 1.8rem;
+    font-family: "Cinzel", Georgia, serif;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #ecd28a;
+    border: 1px solid rgba(224, 185, 90, 0.55);
+    background: rgba(224, 185, 90, 0.06);
+    transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+    touch-action: manipulation;
+  }
+  .btn-ghost:active {
+    transform: scale(0.97);
+  }
+  @media (hover: hover) {
+    .btn-ghost:hover {
+      background: rgba(224, 185, 90, 0.16);
+      box-shadow: 0 0 40px -8px rgba(224, 185, 90, 0.55);
+      transform: translateY(-2px);
+    }
+  }
+
+  .eyebrow {
+    font-family: "Cinzel", Georgia, serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: rgba(236, 210, 138, 0.85);
+  }
+
+  .card-hover {
+    transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+  }
+  @media (hover: hover) {
+    .card-hover:hover {
+      transform: translateY(-4px);
+      border-color: rgba(236, 210, 138, 0.5);
+      box-shadow:
+        0 18px 50px -14px rgba(0, 0, 0, 0.7),
+        0 0 40px -12px rgba(224, 185, 90, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    }
+  }
+}
+
+/* Scroll reveal — only hides content when JS is available, so the page is never blank */
+.js .reveal:not(.is-visible) {
+  opacity: 0;
+  transform: translateY(22px);
+}
+.reveal {
+  transition: opacity 0.9s cubic-bezier(0.2, 0.7, 0.2, 1), transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1);
+  will-change: opacity, transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .js .reveal:not(.is-visible) {
+    opacity: 1;
+    transform: none;
+  }
+}
