@@ -59,7 +59,7 @@ export const eventData: EventData = {
   community: "Badulla Central College 2K26 A/L Science Section",
 
   // ── Core details (used in the hero, info cards, venue section and footer) ──
-  date: "25 October 2025",
+  date: "25 October 2026",
   time: "2:00 PM onwards",
   ticketPrice: "LKR 3,500",
   theme: "Celestial Royalty",
