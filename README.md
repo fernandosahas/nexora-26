@@ -95,3 +95,4 @@ vercel --prod   # production
 - Generate your ticket QR codes from the final production URL (e.g. `https://nexora26.vercel.app`, or a custom domain added under Project → Settings → Domains).
 - Optional: set an environment variable `NEXT_PUBLIC_SITE_URL` to your final domain so share-card (Open Graph) links use it exactly. On Vercel it falls back to the production URL automatically.
 - Test the link in WhatsApp to preview the share card.
+"# nexora-26" 
